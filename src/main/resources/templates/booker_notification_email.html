@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SentBe: Approval for sign-up</title>
+</head>
+<style>
+    th,td{
+        border: 1px solid #F3F3F9;
+
+    }
+    th:first-of-type{
+        border-top-left-radius: 5px;
+    }
+    th:last-of-type{
+        border-top-right-radius: 5px;
+    }
+    tr:last-child{
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+
+</style>
+
+<body>
+<div
+        style="
+        font-family: Helvetica, Arial, sans-serif;
+        min-width: 1000px;
+        overflow: auto;
+      "
+>
+    <!-- Background wrapper -->
+    <div
+            style="
+          margin: 50px auto;
+          width: 70%;
+          padding: 20px 0;
+          background-color: #0000000d;
+        "
+    >
+        <!-- Wrapper -->
+        <div style="width: 840px; background-color: #fff; margin: auto; font-size: 14px;">
+            <!-- Header -->
+            <div style="background-color: #0156fc; padding: 22px 0">
+                <img
+                        style="margin: auto; display: block; width:80px;"
+                        src="https://firebasestorage.googleapis.com/v0/b/savor-cake.appspot.com/o/savor-cakes-logo-white.png?alt=media&token=bf52f572-9ec8-4aac-ab44-1471e5f464b1"
+                        alt="SentBe-logo"
+                />
+            </div>
+
+            <!-- Body -->
+            <div style="padding: 18px 28px 0 28px">
+                <h2 style="margin-bottom:25px;">Chào <span th:text="${name}"></span></h2>
+                <p style="margin-bottom:25px;">Bạn đã đặt hàng thành công cho <span th:text="${receiverName}"></span> / <span th:text="${receiverPhone}"></span></p>
+
+                <table style="border-radius: 5px; border-collapse: separate;border-spacing: 0;  margin-bottom:20px; width:100%; text-align: start; font-size: 14px;">
+                    <tr style="background-color:#F5F8FE; padding:0 !important; color: #787C8D; height: 50px; border-top-left-radius: 10px;">
+                        <th style="padding:0 0 0 15px; width: 120px; text-align: start;">Tên</th>
+                        <th style="padding:0 0 0 15px; width: 120px; text-align: start;">Mô tả</th>
+                        <th style="padding: 0 0 0 15px; text-align: start; width: 420px;">Chi tiết</th>
+                    </tr>
+                    <tbody>
+                    <th:block th:each="cake : ${cakes}">
+                        <tr>
+                            <td  style="height: 50px;padding:0 0 0 15px; width: 150px; text-align: start;font-weight: bold; color: #2A3165;">
+                                <img style="width: 80px;" src="https://firebasestorage.googleapis.com/v0/b/savor-cake.appspot.com/o/cakes%2F04ee7c7e-8547-4492-85f4-e5459b672d97?alt=media&token=60b33060-d255-49a6-9a19-46d3d81bff79"
+                                     alt="cake">
+                                <p th:text="${cake.cakeName}"></p>
+                            </td>
+                            <td style="height: 50px;padding:0 0 0 15px; width: 150px; text-align: start;">
+                                <p th:text="${cake.cakeDesc}"></p>
+                            </td>
+                            <td style="height: 50px;padding:0 0 0 15px; width: 150px; text-align: start;">
+                                <p>SL: <span th:text="${cake.quantity}"></span></p>
+                                <p >Thành tiền: <span th:text="${cake.cakeTotalPrice}"></span></p>
+                            </td>
+                        </tr>
+                    </th:block>
+                    <th:block th:each="acc : ${accessories}">
+                        <tr>
+                            <td  style="height: 50px;padding:0 0 0 15px; width: 150px; text-align: start;font-weight: bold; color: #2A3165;">
+                                <img style="width: 80px;" src="https://firebasestorage.googleapis.com/v0/b/savor-cake.appspot.com/o/cakes%2F04ee7c7e-8547-4492-85f4-e5459b672d97?alt=media&token=60b33060-d255-49a6-9a19-46d3d81bff79"
+                                     alt="cake">
+                                <p th:text="${acc.accessoryName}"></p>
+                            </td>
+                            <td style="height: 50px;padding:0 0 0 15px; width: 150px; text-align: start;">
+                                <p>Phụ kiện</p>
+                            </td>
+                            <td style="height: 50px;padding:0 0 0 15px; width: 150px; text-align: start;">
+                                <p>SL: <span th:text="${acc.quantity}"></span></p>
+                                <p >Thành tiền: <span th:text="${acc.totalPrice}"></span></p>
+                            </td>
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Footer -->
+            <div
+                    style="
+              padding: 80px 28px 24px 28px;
+              font-size: 12px;
+              line-height: 16px;
+              color: #b7b8bf;
+              overflow: auto;
+            "
+            >
+                <div style="float: left">
+                    <p style="margin: 0">Savor Cake System</p>
+                    <p style="margin: 0">Author: MyCapstone@gmai.com</p>
+                    <p style="margin: 0">Business License: 618-88-00279</p>
+                </div>
+
+                <div style="float: right">
+                    <p style="margin: 0">
+                        VietNam: 148 Trần Duy Hưng, Hà Nội
+                    </p>
+                    <p style="margin: 0">
+                        Singapore Office: #09-07, 120 Robinson Road,
+                    </p>
+                    <p style="margin: 0">Singapore, 068913</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
